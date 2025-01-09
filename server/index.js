@@ -12,11 +12,17 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
+// Update CORS configuration to allow multiple origins
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'http://127.0.0.1:5173',
+    'http://127.0.0.1:5174'
+  ],
   credentials: true
 }));
+
 app.use(express.json());
 
 // Routes
@@ -24,11 +30,10 @@ app.use('/api/auth', authRouter);
 app.use('/api/services', servicesRouter);
 app.use('/api/bookings', bookingsRouter);
 
-// Connect to MongoDB
+// MongoDB connection
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('Connected to MongoDB');
-    // Seed services after successful connection
     seedServices();
   })
   .catch(err => console.error('MongoDB connection error:', err));

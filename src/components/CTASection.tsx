@@ -1,6 +1,6 @@
 export function CTASection() {
   return (
-    <div id="about" className="bg-sage-600 text-white py-24">
+    <div id="about" className="bg-sage-800 text-white py-24">
       <div className="max-w-7xl mx-auto px-4 text-center">
         <h2 className="text-4xl font-light mb-4 tracking-wide">
           Why Choose ALL GIGS?
@@ -11,7 +11,7 @@ export function CTASection() {
         </p>
         <a
           href="#contact"
-          className="inline-block bg-white text-sage-700 px-8 py-3 rounded-full text-lg font-light tracking-wide hover:bg-sage-50 transition-colors"
+          className="inline-block bg-white text-earth-400 px-8 py-3 rounded-full text-lg font-bold tracking-wide hover:bg-sage-50 transition-colors"
         >
           Contact Us
         </a>

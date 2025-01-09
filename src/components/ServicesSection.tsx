@@ -4,10 +4,10 @@ import { services } from "../data/services";
 export function ServicesSection() {
   return (
     <div id="services" className="max-w-7xl mx-auto px-4 py-24">
-      <h2 className="text-4xl font-light text-center mb-4 text-sage-800 tracking-wide">
+      <h2 className="text-3xl font-bold text-center mb-12 text-sage-800">
         Our Services
       </h2>
-      <p className="text-center text-sage-600 mb-16 max-w-2xl mx-auto font-light">
+      <p className="text-center text-sage-600 mb-16 max-w-2xl mx-auto font-medium">
         Discover our comprehensive range of professional services designed to
         make your life easier
       </p>
