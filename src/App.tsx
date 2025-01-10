@@ -12,6 +12,7 @@ import { Locations } from "./components/Locations";
 import { QueryForm } from "./components/QueryForm";
 import { Testimonials } from "./components/Testimonials";
 import { AuthProvider } from "./contexts/AuthContext";
+import { Dashboard } from "./pages/Dashboard";
 
 // Define your routes
 const router = createBrowserRouter([
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
         </div>
       </>
     ),
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ]);
 

@@ -3,6 +3,8 @@ import { User } from '../models/User.js';
 
 export const auth = async (req, res, next) => {
   try {
+    console.log('Auth header:', req.header('Authorization'));
+    
     const token = req.header('Authorization')?.replace('Bearer ', '');
     
     if (!token) {
@@ -10,6 +12,7 @@ export const auth = async (req, res, next) => {
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log('Decoded token:', decoded);
     
     const user = await User.findById(decoded.userId);
     
@@ -20,6 +23,7 @@ export const auth = async (req, res, next) => {
     req.user = user;
     next();
   } catch (error) {
+    console.error('Auth middleware error:', error);
     res.status(401).json({ message: 'Please authenticate' });
   }
 };

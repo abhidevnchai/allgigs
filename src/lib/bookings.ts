@@ -12,20 +12,47 @@ export interface BookingData {
 
 export const bookings = {
   async create(data: BookingData) {
+    const token = localStorage.getItem('token');
     const response = await fetch(`${API_URL}/api/bookings`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Authorization": `Bearer ${token}`
       },
       body: JSON.stringify(data),
     });
-    console.log(data);
 
     if (!response.ok) {
-      throw new Error("Failed to create booking");
+      const error = await response.json();
+      throw new Error(error.message || 'Failed to create booking');
     }
 
     return response.json();
   },
+
+  async getUserBookings() {
+    const token = localStorage.getItem('token');
+    console.log('Using token:', token);
+
+    if (!token) {
+      throw new Error('No authentication token found');
+    }
+
+    const response = await fetch(`${API_URL}/api/bookings/user`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
+    console.log('Bookings response status:', response.status);
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'Failed to fetch bookings');
+    }
+
+    return response.json();
+  }
 };

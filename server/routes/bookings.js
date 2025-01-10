@@ -1,6 +1,7 @@
 import express from 'express';
-import { Booking } from '../models/Booking.js';
+import Booking from '../models/Booking.js';
 import { auth } from '../middleware/auth.js';
+import { authenticateToken } from '../middleware/authenticateToken.js';
 
 const router = express.Router();
 
@@ -30,4 +31,18 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-export const bookingsRouter = router;
+// Get bookings for authenticated user
+router.get('/user', authenticateToken, async (req, res) => {
+  try {
+    const bookings = await Booking.find({ userId: req.user.id })
+      .sort({ date: -1 })
+      .populate('service', 'name');
+    
+    res.json(bookings);
+  } catch (error) {
+    console.error('Error fetching user bookings:', error);
+    res.status(500).json({ message: 'Error fetching bookings' });
+  }
+});
+
+export default router;

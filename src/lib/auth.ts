@@ -35,42 +35,40 @@ export const auth = {
     return response.json();
   },
 
-  async login(email: string, password: string): Promise<AuthResponse> {
+  async login(credentials: { email: string; password: string }) {
     const response = await fetch(`${API_URL}/api/auth/login`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify(credentials),
     });
 
     if (!response.ok) {
       const error = await response.json();
-      throw new Error(error.message || "Login failed");
+      throw new Error(error.message || 'Login failed');
     }
 
     const data = await response.json();
-    localStorage.setItem("token", data.token);
+    console.log('Login response:', data);
+    localStorage.setItem('token', data.token);
     return data;
   },
 
-  async getCurrentUser(): Promise<User> {
-    const token = localStorage.getItem("token");
-    
-    if (!token) {
-      throw new Error("No token found");
-    }
+  async getCurrentUser() {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
 
     const response = await fetch(`${API_URL}/api/auth/me`, {
       headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
     });
 
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message || "Failed to get user");
+      localStorage.removeItem('token');
+      throw new Error('Failed to get current user');
     }
 
     return response.json();

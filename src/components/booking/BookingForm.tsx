@@ -36,10 +36,6 @@ export function BookingForm({ initialService = "" }: BookingFormProps) {
     fetchServices();
   }, []);
 
-  {
-    console.log(user);
-  }
-
   const [formData, setFormData] = useState<BookingData>({
     service: initialService,
     houseType: "",
@@ -57,6 +53,11 @@ export function BookingForm({ initialService = "" }: BookingFormProps) {
     setSuccess(false);
 
     try {
+      console.log('Submitting booking data:', {
+        date: formData.date,
+        service: formData.service,
+        notes: formData.additionalNotes
+      });
       await bookings.create({
         ...formData,
         user: user?._id || ""
@@ -71,8 +72,9 @@ export function BookingForm({ initialService = "" }: BookingFormProps) {
         additionalNotes: "",
         user: user?._id || ""
       });
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to submit booking");
+    } catch (error) {
+      console.error('Booking error details:', error);
+      setError(error instanceof Error ? error.message : "Failed to submit booking");
     } finally {
       setLoading(false);
     }

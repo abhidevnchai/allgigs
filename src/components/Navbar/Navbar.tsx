@@ -3,14 +3,14 @@ import { MenuButton } from "./MenuButton";
 import { NavLink } from "./NavLink";
 import { UserMenu } from "../UserMenu";
 import { useAuth } from "../../contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 import logo from "../../assets/logo.png";
-console.log(logo);
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +34,7 @@ export function Navbar() {
     { href: "#services", text: "Services", delay: 200 },
     { href: "#about", text: "About", delay: 300 },
     { href: "#contact", text: "Contact", delay: 400 },
+    ...(isAuthenticated ? [{ href: "/dashboard", text: "Dashboard", delay: 500 }] : []),
   ];
 
   return (
@@ -60,6 +61,29 @@ export function Navbar() {
           </a>
 
           <div className="flex items-center space-x-6">
+            {!isAuthenticated ? (
+              <div className="flex items-center gap-4">
+                <Link 
+                  to="/login" 
+                  className="text-white hover:text-sage-200 transition-colors"
+                >
+                  Login
+                </Link>
+                <Link 
+                  to="/signup" 
+                  className="bg-sage-600 text-white px-4 py-1 rounded-lg hover:bg-sage-700 transition-colors"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            ) : (
+              <Link 
+                to="/dashboard" 
+                className="text-white hover:text-sage-200 transition-colors"
+              >
+                Dashboard
+              </Link>
+            )}
             <UserMenu />
             <div className={isScrolled || isOpen ? "text-white" : "text-white"}>
               <MenuButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
