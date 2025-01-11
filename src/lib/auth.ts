@@ -6,7 +6,7 @@ interface User {
   fullName: string;
 }
 
-interface AuthResponse {
+export interface AuthResponse {
   user: User;
   token: string;
 }
@@ -50,7 +50,6 @@ export const auth = {
     }
 
     const data = await response.json();
-    console.log('Login response:', data);
     localStorage.setItem('token', data.token);
     return data;
   },

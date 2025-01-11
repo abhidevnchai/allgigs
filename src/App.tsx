@@ -1,10 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Hero } from "./components/Hero";
-import { ServicesSection } from "./components/ServicesSection";
 import { CTASection } from "./components/CTASection";
 import { Footer } from "./components/Footer";
-import { HowItWorks } from "./components/HowItWorks";
 import { BookingPage } from "./pages/BookingPage";
 import { SignupPage } from "./pages/SignupPage";
 import { LoginPage } from "./pages/LoginPage";
@@ -13,6 +11,7 @@ import { QueryForm } from "./components/QueryForm";
 import { Testimonials } from "./components/Testimonials";
 import { AuthProvider } from "./contexts/AuthContext";
 import { Dashboard } from "./pages/Dashboard";
+import { ContentSwitcher } from "./components/ContentSwitcher";
 
 // Define your routes
 const router = createBrowserRouter([
@@ -23,8 +22,7 @@ const router = createBrowserRouter([
         <Navbar />
         <div className="min-h-screen bg-sage-50">
           <Hero />
-          <HowItWorks />
-          <ServicesSection />
+          <ContentSwitcher />
           <Testimonials />
           <Locations />
           <CTASection />
@@ -70,7 +68,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <>
+        <Navbar />
+        <div className="min-h-screen bg-sage-50">
+          <Dashboard />
+        </div>
+        <Footer />
+      </>
+    ),
   },
 ]);
 
