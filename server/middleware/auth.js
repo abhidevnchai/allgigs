@@ -2,18 +2,14 @@ import jwt from 'jsonwebtoken';
 import { User } from '../models/User.js';
 
 export const auth = async (req, res, next) => {
-  try {
-    console.log('Auth header:', req.header('Authorization'));
-    
+  try {   
     const token = req.header('Authorization')?.replace('Bearer ', '');
     
     if (!token) {
       return res.status(401).json({ message: 'Authentication required' });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log('Decoded token:', decoded);
-    
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);    
     const user = await User.findById(decoded.userId);
     
     if (!user) {

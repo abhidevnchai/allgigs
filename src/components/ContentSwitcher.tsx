@@ -10,13 +10,13 @@ export function ContentSwitcher() {
   );
 
   return (
-    <div className="max-w-7xl mx-auto px-4 -mt-8 relative z-10">
-      <div className="bg-white rounded-xl p-2 flex gap-4 w-fit mx-auto shadow-lg">
+    <div className="max-w-8xl mx-auto px-4 -mt-8 relative z-10">
+      <div className="bg-mint rounded-xl p-2 flex gap-4 w-fit mx-auto shadow-lg">
         <motion.button
           className={`py-3 px-8 rounded-lg text-base font-medium transition-all ${
             activeTab === "services"
-              ? "bg-sage-600 text-white shadow-md"
-              : "text-sage-600 hover:bg-sage-50"
+              ? "bg-cambridge text-mint shadow-md"
+              : "text-slate hover:bg-nyanza"
           }`}
           onClick={() => setActiveTab("services")}
         >

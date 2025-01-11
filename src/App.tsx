@@ -12,6 +12,8 @@ import { Testimonials } from "./components/Testimonials";
 import { AuthProvider } from "./contexts/AuthContext";
 import { Dashboard } from "./pages/Dashboard";
 import { ContentSwitcher } from "./components/ContentSwitcher";
+import { BlogSection } from "./components/BlogSection";
+import { FAQSection } from "./components/FAQSection";
 
 // Define your routes
 const router = createBrowserRouter([
@@ -20,12 +22,14 @@ const router = createBrowserRouter([
     element: (
       <>
         <Navbar />
-        <div className="min-h-screen bg-sage-50">
+        <div className="min-h-screen">
           <Hero />
           <ContentSwitcher />
           <Testimonials />
           <Locations />
+          <BlogSection />
           <CTASection />
+          <FAQSection />
           <QueryForm />
         </div>
         <Footer />

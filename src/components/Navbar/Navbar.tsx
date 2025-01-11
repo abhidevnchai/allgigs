@@ -42,7 +42,7 @@ export function Navbar() {
       <nav
         className={`fixed w-full z-40 transition-all duration-300 ${
           isScrolled
-            ? "bg-sage-800/95 backdrop-blur-sm py-1"
+            ? "bg-slate/95 backdrop-blur-sm py-1"
             : "bg-transparent py-1"
         }`}
       >
@@ -65,13 +65,13 @@ export function Navbar() {
               <div className="flex items-center gap-4">
                 <Link 
                   to="/login" 
-                  className="text-white hover:text-sage-200 transition-colors"
+                  className="text-mint hover:text-nyanza transition-colors"
                 >
                   Login
                 </Link>
                 <Link 
                   to="/signup" 
-                  className="bg-sage-600 text-white px-4 py-1 rounded-lg hover:bg-sage-700 transition-colors"
+                  className="bg-cambridge text-mint px-4 py-1 rounded-lg hover:bg-cambridge/80 transition-colors"
                 >
                   Sign Up
                 </Link>
