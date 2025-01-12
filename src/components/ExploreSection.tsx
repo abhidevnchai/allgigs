@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Compass, Calendar, Users, Utensils, Heart } from 'lucide-react';
+import { Compass, Calendar, Users, Utensils } from 'lucide-react';
 
 const exploreCategories = [
   {
@@ -13,29 +13,24 @@ const exploreCategories = [
     description: 'Find upcoming events in your area'
   },
   {
-    title: 'Community Forums',
+    title: 'Spots',
     icon: <Users className="w-6 h-6" />,
-    description: 'Connect with your local community'
+    description: 'Find the best spots in your area'
   },
   {
     title: 'Restaurants',
     icon: <Utensils className="w-6 h-6" />,
     description: 'Explore local dining options'
   },
-  {
-    title: "Founder's Favorites",
-    icon: <Heart className="w-6 h-6" />,
-    description: 'Hand-picked recommendations from our founders'
-  }
 ];
 
 export function ExploreSection() {
   return (
-    <div className="py-12">
-      <h2 className="text-3xl font-bold text-center mb-12 text-sage-800">
+    <div className="py-12 bg-sage-900">
+      <h2 className="text-3xl font-bold text-center mb-12 text-white">
         Explore Your Community
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-8">
         {exploreCategories.map((category, index) => (
           <motion.div
             key={category.title}

@@ -1,50 +1,53 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
+import { HowItWorks } from "./HowItWorks";
 import { ServicesSection } from "./ServicesSection";
 import { ExploreSection } from "./ExploreSection";
-import { HowItWorks } from "./HowItWorks";
 
-export function ContentSwitcher() {
-  const [activeTab, setActiveTab] = useState<"services" | "explore">(
-    "services"
-  );
+interface ContentSwitcherProps {
+  activeTab: string;
+  onTabChange: (tab: string) => void;
+}
 
+export function ContentSwitcher({ activeTab, onTabChange }: ContentSwitcherProps) {
   return (
-    <div className="max-w-8xl mx-auto px-4 -mt-8 relative z-10">
-      <div className="bg-mint rounded-xl p-2 flex gap-4 w-fit mx-auto shadow-lg">
+    <div className="max-w-8xl mx-auto -mt-6 sm:-mt-8 relative z-10">
+      <div className="bg-mint rounded-xl p-2 flex flex-col sm:flex-row gap-2 sm:gap-4 w-full sm:w-fit mx-auto shadow-lg">
         <motion.button
-          className={`py-3 px-8 rounded-lg text-base font-medium transition-all ${
+          className={`py-2 sm:py-3 px-4 sm:px-8 rounded-lg text-sm sm:text-base font-medium transition-colors ${
             activeTab === "services"
               ? "bg-cambridge text-mint shadow-md"
               : "text-slate hover:bg-nyanza"
           }`}
-          onClick={() => setActiveTab("services")}
+          onClick={() => onTabChange("services")}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
         >
           Book a Service
         </motion.button>
         <motion.button
-          className={`py-3 px-8 rounded-lg text-base font-medium transition-all ${
+          className={`py-2 sm:py-3 px-4 sm:px-8 rounded-lg text-sm sm:text-base font-medium transition-colors ${
             activeTab === "explore"
               ? "bg-sage-600 text-white shadow-md"
-              : "text-sage-600 hover:bg-sage-50"
+              : "text-slate hover:bg-nyanza"
           }`}
-          onClick={() => setActiveTab("explore")}
+          onClick={() => onTabChange("explore")}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
         >
           Explore Local
         </motion.button>
       </div>
 
-      {/* Content Sections */}
-      {activeTab === "services" ? (
-        <div className="mt-16">
-          <HowItWorks />
-          <ServicesSection />
-        </div>
-      ) : (
-        <div className="mt-16">
+      <div className="mt-8 sm:mt-12 lg:mt-16">
+        {activeTab === "services" ? (
+          <>
+            <HowItWorks />
+            <ServicesSection />
+          </>
+        ) : (
           <ExploreSection />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

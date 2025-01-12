@@ -21,8 +21,8 @@ export function ServiceSelect({ value, onChange, services }: ServiceSelectProps)
       >
         <option value="">Select a service...</option>
         {services.map((service) => (
-          <option key={service.title} value={service.title}>
-            {service.title}
+          <option key={service._id} value={service.name}>
+            {service.name}
           </option>
         ))}
       </select>

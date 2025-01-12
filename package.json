@@ -14,6 +14,7 @@
   "dependencies": {
     "allgigs": "file:",
     "bcryptjs": "^2.4.3",
+    "clsx": "^2.1.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
@@ -27,7 +28,8 @@
     "nodemailer": "^6.9.16",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.1.1"
+    "react-router-dom": "^7.1.1",
+    "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
     "@types/react": "^19.0.2",

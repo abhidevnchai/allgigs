@@ -29,13 +29,13 @@ export function FAQSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-20 bg-sage-900">
-      <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12 text-earth-300">
+    <section className="py-12 sm:py-16 lg:py-20 bg-sage-900">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-12 text-earth-300">
           Frequently Asked Questions
         </h2>
         
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
@@ -45,15 +45,11 @@ export function FAQSection() {
               transition={{ delay: index * 0.1 }}
             >
               <button
-                className="w-full px-6 py-4 flex justify-between items-center text-left"
+                className="w-full px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center text-left"
                 onClick={() => setActiveIndex(activeIndex === index ? null : index)}
               >
-                <span className="font-medium text-sage-50">{faq.question}</span>
-                <ChevronDown
-                  className={`w-5 h-5 text-earth-300 transition-transform ${
-                    activeIndex === index ? 'rotate-180' : ''
-                  }`}
-                />
+                <span className="font-medium text-sage-50 text-sm sm:text-base pr-4">{faq.question}</span>
+                <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-earth-300 flex-shrink-0" />
               </button>
               
               <AnimatePresence>
@@ -63,9 +59,9 @@ export function FAQSection() {
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="px-6 pb-4"
+                    className="px-4 sm:px-6 pb-3 sm:pb-4"
                   >
-                    <p className="text-sage-200">{faq.answer}</p>
+                    <p className="text-sage-200 text-sm sm:text-base">{faq.answer}</p>
                   </motion.div>
                 )}
               </AnimatePresence>

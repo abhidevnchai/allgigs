@@ -4,11 +4,14 @@ export function Footer() {
   return (
     <footer className="bg-sage-900 text-white py-12">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Logo and Description */}
           <div>
             <h3 className="text-xl font-bold mb-4">AllGigs</h3>
             <p className="text-sage-100">Your trusted partner for all services</p>
           </div>
+          
+          {/* Quick Links */}
           <div>
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sage-100">
@@ -17,6 +20,8 @@ export function Footer() {
               <li><a href="#testimonials" className="hover:text-earth-400">Testimonials</a></li>
             </ul>
           </div>
+          
+          {/* Contact Section */}
           <div>
             <h4 className="font-semibold mb-4">Contact</h4>
             <ul className="space-y-2 text-sage-100">
@@ -30,6 +35,8 @@ export function Footer() {
               </li>
             </ul>
           </div>
+          
+          {/* Social Media Links */}
           <div>
             <h4 className="font-semibold mb-4">Follow Us</h4>
             <div className="flex gap-4">
@@ -39,6 +46,8 @@ export function Footer() {
             </div>
           </div>
         </div>
+
+        {/* Footer Bottom */}
         <div className="border-t border-sage-700 mt-8 pt-8 text-center text-sage-100">
           <p>&copy; 2024 AllGigs. All rights reserved.</p>
         </div>

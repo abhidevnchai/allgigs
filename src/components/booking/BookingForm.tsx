@@ -100,17 +100,17 @@ export function BookingForm({ initialService = "" }: BookingFormProps) {
 
   return (
     <motion.div
-      className="max-w-xl mx-auto bg-sage-700 shadow-xl rounded-lg p-8 space-y-6"
+      className="max-w-xl mx-auto shadow-xl rounded-lg p-8 space-y-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <h2 className="text-2xl font-semibold text-white text-center">
+      {/* <h2 className="text-2xl font-semibold text-white text-center">
         Book a Service
       </h2>
       <p className="text-sm text-white text-center">
         Fill out the form below to schedule your service.
-      </p>
+      </p> */}
 
       {error && (
         <motion.div
@@ -208,7 +208,7 @@ export function BookingForm({ initialService = "" }: BookingFormProps) {
         <motion.button
           type="submit"
           disabled={loading}
-          className="w-full bg-green-600 text-white py-3 px-4 rounded-lg hover:bg-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-sage-900 text-white py-3 px-4 rounded-lg hover:bg-sage-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >

@@ -1,4 +1,3 @@
-
 const steps = [
   { number: '01', title: 'Book Service', desc: 'Choose your service and preferred time' },
   { number: '02', title: 'Get Matched', desc: 'We assign the best professional for your need' },
@@ -10,7 +9,7 @@ export function HowItWorks() {
     <section className="py-20 bg-sage-100" id="how-it-works">
       <div className="container mx-auto px-6">
         <h2 className="text-3xl font-bold text-center mb-12 text-sage-800">How It Works</h2>
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {steps.map((step, index) => (
             <div key={index} className="text-center">
               <div className="text-4xl font-bold text-earth-400 mb-4">{step.number}</div>

@@ -77,12 +77,7 @@ export function Navbar() {
                 </Link>
               </div>
             ) : (
-              <Link 
-                to="/dashboard" 
-                className="text-white hover:text-sage-200 transition-colors"
-              >
-                Dashboard
-              </Link>
+              ""
             )}
             <UserMenu />
             <div className={isScrolled || isOpen ? "text-white" : "text-white"}>

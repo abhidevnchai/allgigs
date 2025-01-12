@@ -2,9 +2,11 @@ import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ServiceCard } from "./ServiceCard";
 import { services } from "../data/services";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 
 export function ServicesSection() {
+  const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -95,7 +97,7 @@ export function ServicesSection() {
   };
 
   return (
-    <div id="services" className="max-w-7xl mx-auto px-4 py-24 bg-mint">
+    <div id="services" className=" py-24 bg-mint">
       <h2 className="text-3xl font-bold text-center mb-12 text-slate-900">
         Our Services
       </h2>
@@ -159,6 +161,22 @@ export function ServicesSection() {
             </motion.div>
           ))}
         </div>
+      </div>
+      {/* Add CTA Section */}
+      <div className="mt-16 text-center">
+        <p className="text-slate-700 mb-6">
+          Looking for more detailed information about our services?
+        </p>
+        <motion.button
+          onClick={() => navigate('/services')}
+          className="inline-flex items-center gap-2 px-6 py-3 bg-sage-700 text-white 
+                   rounded-lg hover:bg-sage-600 transition-colors group"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          View All Services
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </motion.button>
       </div>
     </div>
   );

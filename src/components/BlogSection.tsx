@@ -27,19 +27,18 @@ const blogPosts = [
 
 export function BlogSection() {
   return (
-    <section className="py-20 bg-sage-900">
-
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 text-earth-300">
+    <section className="py-12 sm:py-16 lg:py-20 bg-sage-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-earth-300">
             Tips & Insights
           </h2>
-          <p className="text-sage-100 max-w-2xl mx-auto">
-            Discover helpful tips, local insights, and community updates to enhance your daily life
+          <p className="text-sage-100 max-w-2xl mx-auto text-sm sm:text-base">
+            Discover helpful tips, local insights, and community updates
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {blogPosts.map((post, index) => (
             <motion.article
               key={index}
@@ -51,20 +50,20 @@ export function BlogSection() {
               <img
                 src={post.image}
                 alt={post.title}
-                className="w-full h-48 object-cover"
+                className="w-full h-40 sm:h-48 object-cover"
               />
-              <div className="p-6">
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-earth-300 text-sm">{post.category}</span>
-                  <span className="text-sage-100 text-sm">{post.readTime}</span>
+              <div className="p-4 sm:p-6">
+                <div className="flex justify-between items-center mb-3 sm:mb-4">
+                  <span className="text-earth-300 text-xs sm:text-sm">{post.category}</span>
+                  <span className="text-sage-100 text-xs sm:text-sm">{post.readTime}</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-sage-50">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-sage-50 line-clamp-2">
                   {post.title}
                 </h3>
-                <p className="text-sage-200 mb-4">
+                <p className="text-sage-200 mb-4 text-sm sm:text-base line-clamp-3">
                   {post.excerpt}
                 </p>
-                <button className="text-earth-300 flex items-center gap-2 hover:gap-3 transition-all">
+                <button className="text-earth-300 flex items-center gap-2 text-sm sm:text-base hover:gap-3 transition-all">
                   Read More <ArrowRight size={16} />
                 </button>
               </div>
