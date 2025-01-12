@@ -9,6 +9,7 @@ export function QueryForm() {
     message: ''
   });
   const [status, setStatus] = useState('');
+  console.log(status);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
